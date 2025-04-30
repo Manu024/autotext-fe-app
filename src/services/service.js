@@ -18,7 +18,7 @@ const fetchWeather = async (city) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    if (data) {
+    if (data && data.cod === 200) {
       return { data: data, isSuccess: true }; // Return the fetched data
     }
   } catch (err) {
