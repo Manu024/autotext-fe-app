@@ -11,7 +11,6 @@ import Weather from "../components/Weather";
 const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [view, setView] = useState("posts"); // State to track the selected view
 
   useEffect(() => {
@@ -20,8 +19,6 @@ const Home = () => {
         setLoading(true);
         const response = await fetchPosts();
         if (!response.isSuccess) {
-          setError("Failed to fetch data");
-          setLoading(false);
           showToast("Failed to fetch data"); // Show toast notification
           return;
         }
